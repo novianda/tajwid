@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamus Tajwid</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #e8f5e9; /* Warna latar belakang hijau muda */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff5722; /* Warna oranye */
+            margin-bottom: 20px;
+        }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            background: #3f51b5; /* Warna biru */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .menu a:hover {
+            background: #303f9f; /* Warna biru gelap saat hover */
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .dictionary-content {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .term-card {
+            background: #ffc107; /* Warna kuning cerah */
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px; /* Ukuran tetap untuk card */
+            transition: transform 0.3s; /* Efek transisi */
+        }
+        .term-card:hover {
+            transform: scale(1.05); /* Zoom saat hover */
+        }
+        .term-card h3 {
+            color: #1976d2; /* Warna biru untuk judul */
+        }
+        audio {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a href="index.html">Kembali ke Beranda</a>
+        </div>
+        <h1>Kamus Tajwid</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari istilah tajwid..." onkeyup="searchTerms()">
+        </div>
+        <div class="dictionary-content" id="dictionary">
+            <div class="term-card">
+                <h3>Idgham Bighunnah</h3>
+                <p>Definisi: Memasukkan huruf nun mati atau tanwin ke dalam huruf setelahnya dengan dengung.</p>
+                <p>Huruf: ي ن م و</p>
+                <p>Contoh: مَنْ يَعْمَلْ</p>
+            </div>
+
+            <div class="term-card">
+                <h3>Idgham Bilaghunnah</h3>
+                <p>Definisi: Memasukkan huruf nun mati atau tanwin ke dalam huruf setelahnya tanpa dengung.</p>
+                <p>Huruf: ل ر</p>
+                <p>Contoh: مِنْ رَّبِّكُمْ</p>
+            </div>
+
+            <div class="term-card">
+                <h3>Ikhfa</h3>
+                <p>Definisi: Menyembunyikan/menyamarkan bunyi nun mati atau tanwin.</p>
+                <p>Huruf: ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك</p>
+                <p>Contoh: مِنْ قَبْلِ</p>
+            </div>
+
+            <div class="term-card">
+                <h3>Izhar</h3>
+                <p>Definisi: Membaca nun mati atau tanwin dengan jelas.</p>
+                <p>Huruf: ء ه ع ح غ خ</p>
+                <p>Contoh: مَنْ ءَامَنَ</p>
+            </div>
+
+            <div class="term-card">
+                <h3>Iqlab</h3>
+                <p>Definisi: Mengubah bunyi nun mati atau tanwin menjadi mim.</p>
+                <p>Huruf: ب</p>
+                <p>Contoh: مِنْۢ بَعْدِ</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fitur pencarian istilah
+        function searchTerms() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".term-card");
+            cards.forEach(card => {
+                const title = card.querySelector("h3").textContent.toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = "block"; // Tampilkan jika cocok
+                } else {
+                    card.style.display = "none"; // Sembunyikan jika tidak cocok
+                }
+            });
+        }
+    </script>
+</body>
+</html>

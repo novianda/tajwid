@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 TajwidApp - Belajar Tajwid Seru! 🎉</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Font ceria */
+            line-height: 1.6;
+            text-align: center;
+            background-color: #e1f5fe; /* Warna latar belakang cerah */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff4081; /* Warna pink cerah */
+            font-size: 3em; /* Ukuran font lebih besar */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Efek bayangan */
+        }
+        h2 {
+            color: #007BFF; /* Warna biru */
+            margin-top: 15px;
+            font-size: 2em; /* Ukuran font h2 lebih besar */
+        }
+        .back {
+            text-decoration: none;
+            background: #4caf50; /* Warna hijau */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+        .back:hover {
+            background: #388e3c; /* Efek hover tombol */
+        }
+        /* Styling untuk card info */
+        .tajwid {
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #e7f3ff; /* Warna latar belakang card */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s; /* Efek transisi */
+        }
+        .tajwid:hover {
+            transform: scale(1.02); /* Zoom effect saat hover */
+        }
+        .image-container {
+            margin: 15px 0;
+        }
+        .tajwid-image {
+            max-width: 80%; /* Ukuran gambar yang sedikit lebih kecil */
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        audio {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Selamat Datang di Tajwid App! 🎉</h1>
+
+        <!-- Iqlab -->
+        <div class="tajwid">
+            <h2>Iqlab</h2>
+            <p><b>Pengertian:</b> Iqlab terjadi jika nun mati (نْ) atau tanwin bertemu dengan huruf ب, maka nun mati atau tanwin berubah menjadi bunyi م.</p>
+            <p><b>Contoh:</b> أَنْبِئْهُمْ dibaca "am-bi'uhum"</p>
+            <img src="images/iqlab.jpg" alt="Iqlab" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/iqlab.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Ikhfa -->
+        <div class="tajwid">
+            <h2>Ikhfa</h2>
+            <p><b>Pengertian:</b> Ikhfa terjadi jika nun mati (نْ) atau tanwin bertemu dengan salah satu dari 15 huruf ikhfa.</p>
+            <p><b>Contoh:</b> مَنْذِرُهُمْ dibaca "man-dziruhum"</p>
+            <img src="images/ikhfa.jpg" alt="Ikhfa" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/ikhfa.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Izhar -->
+        <div class="tajwid">
+            <h2>Izhar</h2>
+            <p><b>Pengertian:</b> Izhar terjadi jika nun mati (نْ) atau tanwin bertemu dengan huruf-huruf halqi (ء, هـ, ع, ح, غ, خ).</p>
+            <p><b>Contoh:</b> مِنْ هَادٍ dibaca "min haadin"</p>
+            <img src="images/izhar.jpg" alt="Izhar" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/izhar.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Ikhfa Syafawi -->
+        <div class="tajwid">
+            <h2>Ikhfa Syafawi</h2>
+            <p><b>Pengertian:</b> Ikhfa syafawi terjadi jika nun mati (نْ) bertemu dengan huruf ب, dan dibaca tanpa dengung.</p>
+            <p><b>Contoh:</b> مِنْ بَينِ dibaca "min baini"</p>
+            <img src="images/ikhfa_syafawi.jpg" alt="Ikhfa Syafawi" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/ikhfa_syafawi.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Idgham Mislain -->
+        <div class="tajwid">
+            <h2>Idgham Mislain</h2>
+            <p><b>Pengertian:</b> Idgham mislain terjadi jika nun mati (نْ) bertemu dengan huruf selain huruf yang sama.</p>
+            <p><b>Contoh:</b> مَنْ يَعْمَلْ dibaca "man ya'malu"</p>
+            <img src="images/idgham_mislain.jpg" alt="Idgham Mislain" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/idgham_mislain.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Izhar Syafawi -->
+        <div class="tajwid">
+            <h2>Izhar Syafawi</h2>
+            <p><b>Pengertian:</b> Izhar syafawi terjadi jika nun mati (نْ) bertemu dengan huruf setelahnya dan dibaca jelas.</p>
+            <p><b>Contoh:</b> مِنْ قَوْمِ dibaca "min qawmi"</p>
+            <img src="images/izhar_syafawi.jpg" alt="Izhar Syafawi" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/izhar_syafawi.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Idgham Billagunnah -->
+        <div class="tajwid">
+            <h2>Idgham Billagunnah</h2>
+            <p><b>Pengertian:</b> Idgham Billagunnah terjadi jika nun mati (نْ) bertemu dengan huruf yang harus dibaca dengan dengung, seperti huruf ر atau ل.</p>
+            <p><b>Contoh:</b> يُؤْمِنُونَ dibaca "yu'minuna"</p>
+            <img src="images/idgham.jpg" alt="Idgham Billagunnah" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/idgham.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Mad Asli -->
+        <div class="tajwid">
+            <h2>Mad Asli</h2>
+            <p><b>Pengertian:</b> Mad asli adalah panjang baca yang berfungsi untuk menghilangkan bunyi huruf yang tidak dibaca.</p>
+            <p><b>Contoh:</b> آمِنَ dalam أَمِنَ dibaca "aamin"</p>
+            <img src="images/mad_asli.jpg" alt="Mad Asli" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/mad_asli.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Mad Wajib -->
+        <div class="tajwid">
+            <h2>Mad Wajib</h2>
+            <p><b>Pengertian:</b> Mad wajib adalah panjang baca yang harus dibaca dalam Quran.</p>
+            <p><b>Contoh:</b> الْحَمْدُ dalam الْحَمْدُ لله dibaca "alhamdulillah"</p>
+            <img src="images/mad_wajib.jpg" alt="Mad Wajib" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/mad_wajib.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Mad Ja'iz Munfasil -->
+        <div class="tajwid">
+            <h2>Mad Ja'iz Munfasil</h2>
+            <p><b>Pengertian:</b> Mad ja'iz munfasil adalah panjang baca yang diperbolehkan tetapi tidak diwajibkan.</p>
+            <p><b>Contoh:</b> النَّاسُ dalam الإِنْسَان dibaca "al-naasu"</p>
+            <img src="images/mad_jaiz_munfasil.jpg" alt="Mad Ja'iz Munfasil" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/mad_jaiz_munfasil.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Mad Lin -->
+        <div class="tajwid">
+            <h2>Mad Lin</h2>
+            <p><b>Pengertian:</b> Mad lin terjadi saat huruf wau atau ya diakhiri dengan fathah atau kasrah.</p>
+            <p><b>Contoh:</b> وَأَنَا dibaca "wa ana"</p>
+            <img src="images/mad_lin.jpg" alt="Mad Lin" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/mad_lin.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+
+        <!-- Mad Badal -->
+        <div class="tajwid">
+            <h2>Mad Badal</h2>
+            <p><b>Pengertian:</b> Mad badal adalah mad yang muncul pada kata yang terputus.</p>
+            <p><b>Contoh:</b> لَكُمْ dalam في لَكُمْ dibaca "lakum"</p>
+            <img src="images/mad_badal.jpg" alt="Mad Badal" class="tajwid-image">
+            <audio class="audio-control" controls>
+                <source src="audio/mad_badal.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Tajwid - TajwidApp</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff5722; /* Warna cerah untuk judul */
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #00796b;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        .menu a:hover {
+            background-color: #004d40;
+        }
+        .quiz-selector {
+            margin: 20px 0;
+        }
+        .quiz-type-btn {
+            background-color: #ffd54f;
+            border: none;
+            padding: 15px 25px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .quiz-type-btn:hover {
+            background-color: #ffca28;
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+        .question-card {
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .arabic-text {
+            font-size: 2em;
+            color: #d32f2f; /* Warna untuk teks Arab */
+        }
+        .options-container button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .options-container button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+        .score-display {
+            font-size: 1.5em;
+            color: #1976d2; /* Warna untuk skor */
+            margin: 10px 0;
+        }
+        .correct-answer {
+            color: #43a047; /* Warna untuk jawaban benar */
+        }
+        .wrong-answer {
+            color: #d32f2f; /* Warna untuk jawaban salah */
+        }
+        small {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Latihan Tajwid</h1>
+        <div class="menu">
+            <a href="index.html">Kembali ke Beranda</a>
+        </div>
+
+        <div class="quiz-selector">
+            <button onclick="loadQuizType('idgham')" class="quiz-type-btn">Latihan Idgham</button>
+            <button onclick="loadQuizType('ikhfa')" class="quiz-type-btn">Latihan Ikhfa</button>
+            <button onclick="loadQuizType('izhar')" class="quiz-type-btn">Latihan Izhar</button>
+            <button onclick="loadQuizType('iqlab')" class="quiz-type-btn">Latihan Iqlab</button>
+            <button onclick="loadQuizType('campuran')" class="quiz-type-btn">Latihan Campuran</button>
+        </div>
+
+        <div class="quiz-container">
+            <div class="score-display">
+                Skor: <span id="score">0</span>
+            </div>
+            <div id="quiz-content"></div>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {
+            idgham: [
+                { question: "مَنْ يَعْمَلْ", correct: "Idgham", options: ["Idgham", "Iqlab", "Ikhfa"], explanation: "Nun mati bertemu ya" },
+                { question: "مِنْ رَّبِّكُمْ", correct: "Idgham", options: ["Idgham", "Izhar", "Ikhfa"], explanation: "Nun mati bertemu ra" },
+                { question: "مِنْ نَّفْسٍ", correct: "Idgham", options: ["Idgham", "Iqlab", "Izhar"], explanation: "Nun mati bertemu nun" },
+                { question: "مِنْ وَّلِيٍّ", correct: "Idgham", options: ["Idgham", "Ikhfa", "Iqlab"], explanation: "Nun mati bertemu wau" },
+                { question: "مِنْ مَّآءٍ", correct: "Idgham", options: ["Idgham", "Izhar", "Ikhfa"], explanation: "Nun mati bertemu mim" }
+            ],
+            ikhfa: [
+                { question: "مِنْ كُلِّ", correct: "Ikhfa", options: ["Ikhfa", "Idgham", "Iqlab"], explanation: "Nun mati bertemu kaf" },
+                { question: "اَنْ تَقُوْلُوْا", correct: "Ikhfa", options: ["Ikhfa", "Izhar", "Idgham"], explanation: "Nun mati bertemu ta" },
+                { question: "مِنْ ثَمَرَةٍ", correct: "Ikhfa", options: ["Ikhfa", "Iqlab", "Idgham"], explanation: "Nun mati bertemu tsa" },
+                { question: "مَنْ ذَا", correct: "Ikhfa", options: ["Ikhfa", "Izhar", "Iqlab"], explanation: "Nun mati bertemu dzal" },
+                { question: "يَنْصُرُ", correct: "Ikhfa", options: ["Ikhfa", "Idgham", "Izhar"], explanation: "Nun mati bertemu shad" }
+            ],
+            izhar: [
+                { question: "مِنْ حَكِيْمٍ", correct: "Izhar", options: ["Izhar", "Ikhfa", "Idgham"], explanation: "Nun mati bertemu ha" },
+                { question: "مِنْ عِلْمٍ", correct: "Izhar", options: ["Izhar", "Iqlab", "Ikhfa"], explanation: "Nun mati bertemu 'ain" },
+                { question: "مَنْ ءَامَنَ", correct: "Izhar", options: ["Izhar", "Idgham", "Iqlab"], explanation: "Nun mati bertemu hamzah" },
+                { question: "مِنْ خَيْرٍ", correct: "Izhar", options: ["Izhar", "Ikhfa", "Idgham"], explanation: "Nun mati bertemu kha" },
+                { question: "مِنْ غَفُوْرٍ", correct: "Izhar", options: ["Izhar", "Iqlab", "Ikhfa"], explanation: "Nun mati bertemu ghain" }
+            ],
+            iqlab: [
+                { question: "مِنْۢ بَعْدِ", correct: "Iqlab", options: ["Iqlab", "Ikhfa", "Idgham"], explanation: "Nun mati bertemu ba" },
+                { question: "اَنْۢ بُوْرِكَ", correct: "Iqlab", options: ["Iqlab", "Izhar", "Ikhfa"], explanation: "Nun mati bertemu ba" },
+                { question: "يَنْۢبَغِيْ", correct: "Iqlab", options: ["Iqlab", "Idgham", "Izhar"], explanation: "Nun mati bertemu ba" },
+                { question: "سَمِيْعٌۢ بَصِيْرٌ", correct: "Iqlab", options: ["Iqlab", "Ikhfa", "Idgham"], explanation: "Tanwin bertemu ba" },
+                { question: "عَلِيْمٌۢ بِالشَّاكِرِيْنَ", correct: "Iqlab", options: ["Iqlab", "Izhar", "Ikhfa"], explanation: "Tanwin bertemu ba" }
+            ]
+        };
+
+        let currentQuizType = '';
+        let score = 0;
+
+        function loadQuizType(type) {
+            currentQuizType = type;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const quizContent = document.getElementById('quiz-content');
+            const questions = currentQuizType === 'campuran' ? 
+                [...quizData.idgham, ...quizData.ikhfa, ...quizData.izhar, ...quizData.iqlab] :
+                quizData[currentQuizType];
+            
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            
+            quizContent.innerHTML = `
+                <div class="question-card">
+                    <h2 class="arabic-text">${randomQuestion.question}</h2>
+                    <p>Pilih hukum tajwid yang benar:</p>
+                    <div class="options-container">
+                        ${randomQuestion.options.map(option => 
+                            `<button onclick="checkAnswer('${option}', '${randomQuestion.correct}', '${randomQuestion.explanation}')">${option}</button>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkAnswer(selected, correct, explanation) {
+            const result = document.getElementById('quiz-result');
+            if (selected === correct) {
+                score += 10;
+                document.getElementById('score').textContent = score;
+                result.innerHTML = `
+                    <div class="correct-answer">
+                        ✅ Benar! +10 poin<br>
+                        <small>${explanation}</small>
+                    </div>
+                `;
+            } else {
+                result.innerHTML = `
+                    <div class="wrong-answer">
+                        ❌ Kurang tepat<br>
+                        <small>Jawaban yang benar: ${correct}<br>${explanation}</small>
+                    </div>
+                `;
+            }
+            setTimeout(showQuestion, 2000);
+        }
+    </script>
+</body>
+</html>

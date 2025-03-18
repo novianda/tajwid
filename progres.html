@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Belajar Tajwid</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #e1f5fe; /* Warna latar belakang cerah */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff4081; /* Warna judul cerah */
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            background: #3f51b5; /* Warna biru */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .menu a:hover {
+            background: #303f9f; /* Warna biru gelap saat hover */
+        }
+
+        .progress-overview {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #ffd54f; /* Warna kuning */
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 25%; /* Lebar tetap untuk setiap card */
+        }
+
+        .progress-detail {
+            margin-top: 30px;
+        }
+
+        .progress-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-card {
+            background: #81d4fa; /* Warna biru muda */
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            width: 80%; /* Lebar tetap untuk progress card */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: #e0f7fa; /* Warna latar belakang bar */
+            border-radius: 10px;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: #26a69a; /* Warna progres */
+            height: 100%;
+            transition: width 0.5s; /* Efek transisi */
+        }
+
+        .achievements {
+            margin-top: 30px;
+        }
+
+        .achievement-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .achievement-card {
+            background: #ffcc80; /* Warna oranye */
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            width: 150px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card.locked {
+            opacity: 0.5; /* Tampil transparan untuk locked */
+        }
+
+        .achievement-card img {
+            width: 50px; /* Ukuran gambar badge */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="menu">
+            <a href="index.html">Kembali ke Beranda</a>
+        </div>
+        <h1>Progress Belajar Anda</h1>
+
+        <div class="progress-overview">
+            <div class="stat-card">
+                <h3>Total Skor</h3>
+                <p id="totalScore">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Materi Selesai</h3>
+                <p id="completedLessons">0/20</p>
+            </div>
+            <div class="stat-card">
+                <h3>Level</h3>
+                <p id="userLevel">Pemula</p>
+            </div>
+        </div>
+
+        <div class="progress-detail">
+            <h2>Detail Progress per Materi</h2>
+            <div class="progress-cards">
+                <div class="progress-card">
+                    <h3>Idgham</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="idgham-progress" style="width: 0%"></div>
+                    </div>
+                    <p id="idgham-status">0% Selesai</p>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Ikhfa</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="ikhfa-progress" style="width: 0%"></div>
+                    </div>
+                    <p id="ikhfa-status">0% Selesai</p>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Izhar</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="izhar-progress" style="width: 0%"></div>
+                    </div>
+                    <p id="izhar-status">0% Selesai</p>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Iqlab</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="iqlab-progress" style="width: 0%"></div>
+                    </div>
+                    <p id="iqlab-status">0% Selesai</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements">
+            <h2>Pencapaian</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card locked">
+                    <img src="images/badges/beginner.png" alt="Pemula">
+                    <h4>Pemula</h4>
+                    <p>Selesaikan 5 latihan</p>
+                </div>
+                <div class="achievement-card locked">
+                    <img src="images/badges/intermediate.png" alt="Menengah">
+                    <h4>Menengah</h4>
+                    <p>Selesaikan 15 latihan</p>
+                </div>
+                <div class="achievement-card locked">
+                    <img src="images/badges/expert.png" alt="Ahli">
+                    <h4>Ahli</h4>
+                    <p>Selesaikan semua latihan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/progress.js"></script>
+</body>
+</html>
